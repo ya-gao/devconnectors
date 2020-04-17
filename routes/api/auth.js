@@ -9,7 +9,7 @@ const auth = require('../../middleware/auth');
 const User = require('../../models/User');
 
 // @router    GET api/auth
-// @desc      Test route
+// @desc      get user
 // @access    Public
 // adding a middleware makes it a private route
 router.get('/', auth, async (req, res) => {
