@@ -1,5 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://yagao:yagao@devconnector-sv9dt.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "mysecrettoken",
-    "OAUTH-TOKEN": "5f8fff0c47dccc7092a691d3fb06a0ce1d461214"
-}
