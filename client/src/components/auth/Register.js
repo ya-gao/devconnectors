@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from 'react';
+import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types'; 
 
-const Register = () => {
+const Register = ({ setAlert }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -17,12 +19,12 @@ const Register = () => {
         [e.target.name]: e.target.value
     });
 
-    const onSubmit = async e => {
+    const onSubmit = e => {
         e.preventDefault();
         if(password !== password2) {
-            console.log('Passwords do not match');
+            setAlert('Password do not match', 'danger');
         } else {
-            console.log(formData);
+            setAlert('SUCCESS', 'danger');
         }
     };
 
@@ -32,10 +34,24 @@ const Register = () => {
             <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
-                    <input type="text" placeholder="Name" name="name" value={name} onChange={e => onChange(e)} required />
+                    <input 
+                        type="text" 
+                        placeholder="Name" 
+                        name="name" 
+                        value={name} 
+                        onChange={e => onChange(e)} 
+                        required 
+                    />
                 </div>
                 <div className="form-group">
-                    <input type="email" placeholder="Email Address" name="email" value={email} onChange={e => onChange(e)} required />
+                    <input 
+                        type="email" 
+                        placeholder="Email Address" 
+                        name="email" 
+                        value={email} 
+                        onChange={e => onChange(e)} 
+                        required 
+                    />
                     <small className="form-text"
                         >This site uses Gravatar so if you want a profile image, use a
                         Gravatar email
@@ -67,7 +83,13 @@ const Register = () => {
                 Already have an account? <Link to="/login">Sign In</Link>
             </p>
         </Fragment>
-    )
+    );
+};
+
+Register.propTypes = {
+    setAlert: PropTypes.func.isRequired,
 }
 
-export default Register;
+// connect takes in (any state you want to map, get state from any reducer) and (an object of the actions you wanna use)
+// you can access actions through props
+export default connect(null, { setAlert })(Register);
