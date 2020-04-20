@@ -41,7 +41,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
             instagram: loading || ! profile.social ? '' : profile.social.instagram,
             wechat: loading || ! profile.social ? '' : profile.social.wechat,
         });
-    }, [loading]);
+    }, [loading, getCurrentProfile]);
 
     const {
         company,
