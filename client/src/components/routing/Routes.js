@@ -36,3 +36,5 @@ export const Routes = () => {
         </section>
     );
 };
+
+export default Routes;
